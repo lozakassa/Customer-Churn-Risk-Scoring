@@ -18,7 +18,7 @@ A phased Logistic Regression approach was utilized to rank-order customer flight
 * **KS Statistic:** 0.4998 (Excellent predictive separation)
 * **Business Impact (Operational Threshold):** The model successfully rank-orders risk so effectively that targeting just the **top 20%** of high-risk customers captures **45.6% of all total churners**, allowing the business to highly optimize retention budgets. 
 
-![KS Measure](images/KS_measure_mode_2.png) 
+![KS Measure](image/KS_measure_mode_2.png) 
 
 ## 📊 Business Intelligence Dashboards
 Dual-audience reporting was implemented to ensure the model's insights were actionable across the organization.
@@ -26,19 +26,19 @@ Dual-audience reporting was implemented to ensure the model's insights were acti
 ### 1. Executive KPIs (Power BI)
 Built for shareholders and executive leadership to track macro-level metrics, total churned customers, and total monthly revenue at risk.
 
-![Power BI Dashboard](images/power_bi_dashboard.png)
+![Power BI Dashboard](image/power_bi_dashboard.png)
 
 ### 2. Technical Diagnostics (Tableau)
 Built for the data science team to visualize the distribution of continuous financial variables and their relationship to customer churn prior to modeling.
 
 **Box Plot of Churn against Total Charge**
-![Box Plot of Churn against Total Charge](images/boxplot_churn_vs_total_charge.png)
+![Box Plot of Churn against Total Charge](image/boxplot_churn_vs_total_charge.png)
 
 **Distribution of Total Charges**
-![Distribution of Total Charges](images/distribution_of_total_charges.png)
+![Distribution of Total Charges](image/distribution_of_total_charges.png)
 
 **Box plot of Churn against monthly charges**
-![Box plot of Churn against monthly charges](images/boxplot_churn_vs_monthly_charges.png)
+![Box plot of Churn against monthly charges](image/boxplot_churn_vs_monthly_charges.png)
 
 ## 📂 Repository Structure
 * `/sql`: Contains `01_clean_churn.sql` and `02_features_churn.sql` used for data transformation and one-hot encoding.
