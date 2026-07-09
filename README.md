@@ -1,231 +1,49 @@
-# 📊 Customer Churn Risk Scoring & Validation
+# 📉 Customer Churn Prediction & Analytics
 
-## 🔍 Overview
+## 📝 Project Overview
+This project provides an end-to-end data analytics and machine learning solution to predict customer churn in the telecommunications industry. The goal was to move beyond simply building a statistical model, focusing instead on delivering actionable, revenue-saving business intelligence to both technical and executive stakeholders.
 
-This repository contains an end-to-end **customer churn risk scoring project** focused on identifying and ranking customers by their likelihood of churn using an **interpretable logistic regression model**.
+**Tech Stack Used:** SQL, Python (Scikit-Learn, Pandas), Tableau, Power BI
 
-🎯 **Primary objective**:
+## 🔍 Key Business Findings
+Through SQL feature engineering and exploratory data analysis, the primary drivers of customer attrition were isolated:
+* **High-Risk Segments:** Customers on **Month-to-Month contracts** and those paying via **Electronic Check** carry a baseline flight risk of >42%.
+* **Retention Drivers:** Customers on two-year contracts and those with a tenure exceeding 4 years show a highly stable churn rate of less than 10%.
 
-* Separate **high-risk** customers from **low-risk** customers
-* Support **operational decision-making** (retention targeting)
+## 🤖 Predictive Modeling Strategy
+A phased Logistic Regression approach was utilized to rank-order customer flight risk. Continuous pricing features were integrated with categorical baseline variables to optimize predictive power.
 
-This project prioritizes **risk ranking, validation, and interpretability** over black-box prediction.
+**Final Model Performance (Model 2):**
+* **ROC AUC:** 0.8216
+* **KS Statistic:** 0.4998 (Excellent predictive separation)
+* **Business Impact (Operational Threshold):** The model successfully rank-orders risk so effectively that targeting just the **top 20%** of high-risk customers captures **45.6% of all total churners**, allowing the business to highly optimize retention budgets. 
 
----
+![KS Measure](images/ks_measure_model2.png) 
 
-## 🗂️ Data
+## 📊 Business Intelligence Dashboards
+Dual-audience reporting was implemented to ensure the model's insights were actionable across the organization.
 
-### 📥 Raw Data
+### 1. Executive KPIs (Power BI)
+Built for shareholders and executive leadership to track macro-level metrics, total churned customers, and total monthly revenue at risk.
 
-```text
-WA_Fn-UseC_-Telco-Customer-Churn.csv
-```
+![Power BI Dashboard](images/power_bi_dashboard.png)
 
-📌 Customer-level dataset containing:
+### 2. Technical Diagnostics (Tableau)
+Built for the data science team to visualize the distribution of continuous financial variables and their relationship to customer churn prior to modeling.
 
-* 🧾 Tenure information
-* 📄 Contract type
-* 💳 Payment method
-* 💰 Monthly and total charges
-* 🚪 Churn indicator (binary)
+**Box Plot of Churn against Total Charge**
+![Box Plot of Churn against Total Charge](images/boxplot_churn_vs_total_charge.png)
 
----
+**Distribution of Total Charges**
+![Distribution of Total Charges](images/distribution_of_total_charges.png)
 
-## 🧹 Data Preparation (SQL)
+**Box plot of Churn against monthly charges**
+![Box plot of Churn against monthly charges](images/boxplot_churn_vs_monthly_charges.png)
 
-All data cleaning and feature engineering were completed in SQL before modeling.
-
-### 🛠️ SQL Scripts
-
-```text
-sql/
- ├── 01_clean_churn.sql
- └── 02_features_churn.sql
-```
-
-🔹 **01_clean_churn.sql**
-
-* 🧼 Handles missing values
-* 🔄 Standardizes fields
-* 🧱 Creates a clean base customer table
-
-🔹 **02_features_churn.sql**
-
-* ⏳ Creates tenure group indicators
-* 📑 Generates contract-type flags
-* 💳 Encodes payment methods
-* 💵 Produces pricing features
-
-### 📦 Final Modeling Dataset
-
-```text
-data/processed/features_customer.csv
-```
-
----
-
-## 📈 Exploratory Data Analysis
-
-### 📊 Tableau
-
-```text
-dashboards/tableau/Descriptive EDA.twb
-```
-
-Used to explore:
-
-* 📉 Churn rate by tenure
-* 🧾 Churn by contract type
-* 💰 Pricing distributions
-
-### 📊 Power BI
-
-```text
-dashboards/powerbi/Churn dashboard.pbix
-```
-
-Interactive dashboard highlighting:
-
-* 📌 Overall churn rate
-* 🧩 Churn by contract
-* 📈 Churn by tenure and pricing bands
-
----
-
-## 🤖 Modeling Approach
-
-### 🧠 Model Selection
-
-A **logistic regression model** was selected as the primary **risk-separating model** due to:
-
-* ✅ Interpretability
-* 🏢 Industry acceptance
-* 📐 Ability to generate continuous risk scores
-
-### 🧪 Models Evaluated
-
-```text
-Model 1: Core Features
-- Tenure indicators
-- Contract type
-- Payment method
-
-Model 2: Core + Pricing (Final Model)
-- All core features
-- Monthly charges
-- Total charges
-```
-
-🏆 **Final model**: Core + Pricing Logistic Regression
-
----
-
-## 🐍 Python Implementation
-
-```text
-src/module1.py
-```
-
-Key steps:
-
-```python
-# Train logistic regression model
-logit_m2.fit(X_train, y_train)
-
-# Generate churn risk scores
-p_churn = logit_m2.predict_proba(X_test)[:, 1]
-```
-
-📤 Output:
-
-* `p_churn` → continuous churn **risk score** used for ranking customers
-
----
-
-## ✅ Model Validation
-
-Validation was performed on a **held-out test set** using industry-standard metrics.
-
-### 📐 ROC AUC
-
-* Confirms strong ranking and discrimination ability
-
-### 📊 Gains & Deciles
-
-* 🔝 **Top 20%** of customers capture **~46% of churn events**
-* Demonstrates strong concentration of churn risk
-
-### 📏 KS Statistic
-
-* **KS ≈ 0.50**
-* Indicates strong separation between churners and non-churners
-* Confirms the model’s effectiveness as a risk-separating tool
-
----
-
-## 🧩 Risk Segmentation
-
-To enhance interpretability, **risk bands** were created on top of model scores.
-
-🔸 **Monthly Charges**
-
-* Low / Medium / High
-
-🔸 **Tenure**
-
-* Early / Mid / Long
-
-🔸 **Contract Type**
-
-* Month-to-month / One-year / Two-year
-
-⚠️ These bands are **descriptive layers**, not separate predictive models.
-
----
-
-## 🔑 Key Findings
-
-* 🚨 Month-to-month customers show the highest churn risk
-* ⏱️ Early-tenure customers are significantly more likely to churn
-* 💸 Higher monthly charges are associated with increased churn probability
-* 🎯 A small subset of customers accounts for a large share of churn
-
----
-
-## 🗃️ Repository Structure
-
-```text
-customer-churn-risk-scoring/
- ├── data/
- │    ├── raw/
- │    └── processed/
- ├── sql/
- │    ├── 01_clean_churn.sql
- │    └── 02_features_churn.sql
- ├── src/
- │    └── module1.py
- ├── dashboards/
- │    ├── tableau/
- │    │    └── Descriptive EDA.twb
- │    └── powerbi/
- │         └── Churn dashboard.pbix
- └── README.md
-```
-
----
-
-## 🧰 Tools Used
-
-```text
-🧮 SQL
-🐍 Python (pandas, scikit-learn, matplotlib)
-📊 Tableau
-📊 Power BI
-```
-
----
-
-## 📝 Notes
-
-This project emphasizes **risk ranking, validation, and interpretability** rather than black-box prediction. The workflow reflects common industry practices in churn and risk analytics.
+## 📂 Repository Structure
+* `/sql`: Contains `01_clean_churn.sql` and `02_features_churn.sql` used for data transformation and one-hot encoding.
+* `/python`: Contains `module1.py` for the Logistic Regression model, testing, and evaluation metrics.
+* `/dashboards`: Contains the Tableau `.twb` and Power BI `.pbix` files.
+* `/docs`: Contains the final project summary report and generated PDF portfolio piece.
+* `/images`: Contains all exported plots and dashboard screenshots.y** rather than black-box prediction. The workflow reflects common industry practices in churn and risk analytics.
 
