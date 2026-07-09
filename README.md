@@ -18,7 +18,7 @@ A phased Logistic Regression approach was utilized to rank-order customer flight
 * **KS Statistic:** 0.4998 (Excellent predictive separation)
 * **Business Impact (Operational Threshold):** The model successfully rank-orders risk so effectively that targeting just the **top 20%** of high-risk customers captures **45.6% of all total churners**, allowing the business to highly optimize retention budgets. 
 
-![KS Measure](images/KS measure mode 2.png) 
+![KS Measure](images/KS_measure_mode_2.png) 
 
 ## 📊 Business Intelligence Dashboards
 Dual-audience reporting was implemented to ensure the model's insights were actionable across the organization.
