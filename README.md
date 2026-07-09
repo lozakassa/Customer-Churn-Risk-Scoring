@@ -26,7 +26,7 @@ Dual-audience reporting was implemented to ensure the model's insights were acti
 ### 1. Executive KPIs (Power BI)
 Built for shareholders and executive leadership to track macro-level metrics, total churned customers, and total monthly revenue at risk.
 
-![Power BI Dashboard](image/power_bi_dashboard.png)
+![Power BI Dashboard](Image/power_bi_dashboard.png)
 
 ### 2. Technical Diagnostics (Tableau)
 Built for the data science team to visualize the distribution of continuous financial variables and their relationship to customer churn prior to modeling.
