@@ -32,13 +32,13 @@ Built for shareholders and executive leadership to track macro-level metrics, to
 Built for the data science team to visualize the distribution of continuous financial variables and their relationship to customer churn prior to modeling.
 
 **Box Plot of Churn against Total Charge**
-![Box Plot of Churn against Total Charge](image/boxplot_churn_vs_total_charge.png)
+![Box Plot of Churn against Total Charge](Image/boxplot_churn_vs_total_charge.png)
 
 **Distribution of Total Charges**
-![Distribution of Total Charges](image/distribution_of_total_charges.png)
+![Distribution of Total Charges](Image/distribution_of_total_charges.png)
 
 **Box plot of Churn against monthly charges**
-![Box plot of Churn against monthly charges](image/boxplot_churn_vs_monthly_charges.png)
+![Box plot of Churn against monthly charges](Image/boxplot_churn_vs_monthly_charges.png)
 
 ## 📂 Repository Structure
 * `/sql`: Contains `01_clean_churn.sql` and `02_features_churn.sql` used for data transformation and one-hot encoding.
