@@ -29,19 +29,26 @@ Built for shareholders and executive leadership to track macro-level metrics, to
 ![Power BI Dashboard](Image/power_bi_dashboard.png)
 
 ### 2. Technical Diagnostics (Tableau)
-Built for the data science team to visualize the distribution of continuous financial variables and their relationship to customer churn prior to modeling.
+Built for the data science team to visualize the distribution of continuous financial variables, identify outliers, and establish the relationships between pricing and customer churn prior to predictive modeling.
 
 **Box Plot of Churn against Total Charge**
-![Box Plot of Churn against Total Charge](Image/boxplot_churn_vs_total_charge.png)
+![Box Plot of Churn against Total Charge](images/boxplot_churn_vs_total_charge.png)
+> **Insight:** This visualization highlights the variance in lifetime value between retained and churned segments. It visually confirms whether the cumulative amount billed to a customer serves as a stabilizing factor or a flight risk.
 
 **Distribution of Total Charges**
-![Distribution of Total Charges](Image/distribution_of_total_charges.png)
+![Distribution of Total Charges](images/distribution_of_total_charges.png)
+> **Insight:** This density plot reveals the heavy right-skew present in the raw financial data. Exposing this non-normal distribution was a critical diagnostic step, as it directly justified the decision to apply a logarithmic transformation to the `total_charges` variable in our final iteration (Model 3) to improve algorithmic performance.
 
-**Box plot of Churn against monthly charges**
-![Box plot of Churn against monthly charges](Image/boxplot_churn_vs_monthly_charges.png)
+**Box Plot of Churn against Monthly Charges**
+![Box plot of Churn against monthly charges](images/boxplot_churn_vs_monthly_charges.png)
+> **Insight:** This plot isolates the immediate price sensitivity of the user base. It demonstrates that customers who churn typically carry a notably higher median monthly bill compared to retained users, reinforcing the strong predictive weight of the `monthly_charges` feature in our logistic regression model.
 
 ## 📂 Repository Structure
-* `/sql`: Contains `01_clean_churn.sql` and `02_features_churn.sql` used for data transformation and one-hot encoding.
+* `/sql`: Contains `01_clean_churn.sql` and `02_features_churn.sql` used for data cleaning, transformation, and one-hot encoding.
+* `/python`: Contains `module1.py` housing the Logistic Regression modeling, testing, and evaluation metrics (ROC AUC, KS Statistic).
+* `/dashboards`: Contains the Tableau (`.twb`) and Power BI (`.pbix`) project files.
+* `/docs`: Contains the final project summary report and generated PDF portfolio piece.
+* `/images`: Contains all exported plots, charts, and dashboard screenshots referenced in this summary.
 * `/python`: Contains `module1.py` for the Logistic Regression model, testing, and evaluation metrics.
 * `/dashboards`: Contains the Tableau `.twb` and Power BI `.pbix` files.
 * `/docs`: Contains the final project summary report and generated PDF portfolio piece.
