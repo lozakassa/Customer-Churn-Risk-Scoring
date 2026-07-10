@@ -60,5 +60,5 @@ Built for the data science team to visualize the distribution of continuous fina
 * `/dashboards`: Contains the Tableau `.twb` and Power BI `.pbix` files.
 * `/docs`: Contains the final project summary report and generated PDF portfolio piece.
 * `/images`: Contains all exported plots and dashboard screenshots.
-![Box plot of Churn against monthly charges](images/boxplot_churn_vs_monthly_charges.png)
+
 
